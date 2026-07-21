@@ -48,6 +48,8 @@ echo '#define SYS_VIMRC_FILE "%{_sysconfdir}/vimrc"' >> src/feature.h
 
 %install
 %make_install
+# Remove gvim-related binaries (GUI support not needed)
+rm -f %{buildroot}%{_bindir}/{eview,evim,gview,gvim,gvimdiff,gvimtutor,rgview,rgvim}
 ln -sv vim %{buildroot}%{_bindir}/vi
 install -vdm 755 %{buildroot}%{_sysconfdir}
 	
